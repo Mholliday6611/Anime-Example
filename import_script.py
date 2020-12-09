@@ -30,7 +30,6 @@ def main():
 
     for row in clean_data:
         new_row = AnimeTable(rank=row[0],title=row[1], rating=row[2], link=row[4])
-        print(new_row)
         db.session.add(new_row)
         db.session.commit()
 
