@@ -28,6 +28,20 @@ def home():
         d.append(row_as_dict)
     return render_template("home.html", data=d)
 
+@app.route("/table", methods=["GET"])
+def table_view():
+    table = AnimeTable.query.all()
+    d=[]
+    for row in table:
+        row_as_dict = {
+            "rank": row.rank,
+            "title": row.title,
+            "rating": row.rating,
+            "link": row.link,
+        }
+        d.append(row_as_dict)
+    return render_template("table.html", data=d)
+
 @app.route("/api", methods=["GET"])
 def api_route():
     table = AnimeTable.query.all()
